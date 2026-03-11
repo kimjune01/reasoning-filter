@@ -1,0 +1,3 @@
+Wrote the scores to [experiment/gpt54_self_scores.md](/Users/junekim/Documents/reasoning-filter/experiment/gpt54_self_scores.md).
+
+`gpt54_slop_a.md` came out at `3.3/10`; `gpt54_slop_b.md` at `4.2/10`. B is somewhat better because it contains at least a few real mechanisms and transition logic, but both pieces are still dominated by generic, reorderable, high-polish summary rather than tightly chained original reasoning.
