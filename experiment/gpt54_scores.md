@@ -1,0 +1,3 @@
+Results are written to [experiment/gpt54_scores.md](/Users/junekim/Documents/reasoning-filter/experiment/gpt54_scores.md).
+
+The separation is clear. Both originals score far above the slop and humanized variants because they introduce mechanisms that later paragraphs actually depend on, while the variants mostly recycle standard topic-level observations with low novelty and high interchangeability. The humanized drafts read slightly less canned, but they do not materially close the reasoning gap.
