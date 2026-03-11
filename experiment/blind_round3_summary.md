@@ -1,6 +1,6 @@
 # Blind Round 3: 16-Sample Test (8 Authors)
 
-Scorer: GPT-5.4 via Codex CLI
+Scorer: GPT-5.0 via Codex CLI (mislabeled as GPT-5.4; see post_publication/ante_publication_rescore.md for GPT-5.4 re-score)
 Method: 16 texts with neutral filenames (sample_01 through sample_16), shuffled randomly. Verbatim source text used for all originals.
 
 ## Authors Tested
