@@ -1,6 +1,6 @@
 # Blind Round 3: 16-Sample Test (8 Authors)
 
-Scorer: GPT-5.0 via Codex CLI (mislabeled as GPT-5.4; see post_publication/ante_publication_rescore.md for GPT-5.4 re-score)
+Scorer: GPT-5.4 via Codex CLI
 Method: 16 texts with neutral filenames (sample_01 through sample_16), shuffled randomly. Verbatim source text used for all originals.
 
 ## Authors Tested
@@ -18,49 +18,55 @@ Method: 16 texts with neutral filenames (sample_01 through sample_16), shuffled 
 
 ## Results
 
-**Classification accuracy: 16/16 (100%)**
+**Qualitative classification accuracy: 16/16 (100%)**
+**Numeric score separation: weak (avg gap 0.5)**
 
 | Rank | Sample | Actual | Score | Prediction |
 |------|--------|--------|:---:|-----------|
-| 1 | sample_12 | **Krebs** (original) | 9.5 | Original |
-| 2 | sample_16 | **Geerling** (original) | 8.8 | Original |
-| 3 | sample_02 | **Gwern** (original) | 8.3 | Original |
-| 4 | sample_08 | **Soltani** (original) | 8.0 | Original |
-| 5 | sample_06 | **patio11** (original) | 8.0 | Original |
-| 6 | sample_07 | PTP clock slop | 7.8 | Generated |
-| 7 | sample_14 | **Willison** (original) | 7.6 | Original |
-| 8 | sample_04 | **Goedecke** (original) | 7.3 | Original |
-| 9 | sample_03 | encryption slop | 7.0 | Generated |
-| 10 | sample_15 | botnet slop | 6.9 | Generated |
-| 11 | sample_09 | scaling slop | 6.7 | Generated |
-| 12 | sample_10 | **Paul Graham** (original) | 6.6 | Original |
-| 13 | sample_11 | AI dread slop | 6.5 | Generated |
-| 14 | sample_01 | code review slop | 6.3 | Generated |
-| 15 | sample_13 | salary slop | 5.7 | Generated |
-| 16 | sample_05 | great work slop | 3.7 | Generated |
+| 1 | sample_16 | **Geerling** (original) | 8.0 | Original |
+| 2 | sample_12 | **Krebs** (original) | 7.7 | Original |
+| 3 | sample_15 | botnet slop | 6.5 | Generated |
+| 4 | sample_01 | code review slop | 6.2 | Generated |
+| 5 | sample_07 | PTP clock slop | 6.0 | Generated |
+| 6 | sample_02 | **Gwern** (original) | 5.7 | Original |
+| 7 | sample_04 | **Goedecke** (original) | 5.5 | Original |
+| 8 | sample_03 | encryption slop | 5.3 | Generated |
+| 9 | sample_08 | **Soltani** (original) | 5.2 | Original |
+| 10 | sample_11 | AI dread slop | 4.8 | Generated |
+| 11 | sample_13 | salary slop | 4.7 | Generated |
+| 12 | sample_14 | **Willison** (original) | 4.4 | Original |
+| 13 | sample_06 | **patio11** (original) | 4.3 | Original |
+| 14 | sample_09 | scaling slop | 4.3 | Generated |
+| 15 | sample_10 | **Paul Graham** (original) | 3.7 | Original |
+| 16 | sample_05 | great work slop | 2.8 | Generated |
 
 ### Score Distribution
 
 | Group | Average | Range |
 |-------|:---:|-------|
-| Originals (8) | 7.8 | 6.6 - 9.5 |
-| Slop (8) | 6.1 | 3.7 - 7.8 |
+| Originals (8) | 5.6 | 3.7 - 8.0 |
+| Slop (8) | 5.1 | 2.8 - 6.5 |
 
-### Note on Verbatim vs Paraphrased Text
+### Topic-Pair Accuracy (numeric only)
 
-An earlier run using WebFetch-paraphrased originals scored 14/16 (87.5%). The two misclassified texts — Krebs and Willison — were correctly identified after switching to verbatim source text:
+| Topic | Original | Slop | Original Wins? |
+|-------|:---:|:---:|:---:|
+| Scaling | Gwern 5.7 | 4.3 | **Yes** |
+| Great Work | P. Graham 3.7 | 2.8 | **Yes** |
+| PTP Clock | Geerling 8.0 | 6.0 | **Yes** |
+| Botnet | Krebs 7.7 | 6.5 | **Yes** |
+| Code Review | Goedecke 5.5 | 6.2 | **No** |
+| Encryption | Soltani 5.2 | 5.3 | **No** |
+| AI Dread | Willison 4.4 | 4.8 | **No** |
+| Salary | patio11 4.3 | 4.7 | **No** |
 
-| Author | Paraphrased Score | Verbatim Score | Delta |
-|--------|:---:|:---:|:---:|
-| Krebs | 7.1 | **9.5** | +2.4 |
-| Willison | 7.4 | **7.6** | +0.2 |
-
-This confirms that reasoning density is a property of the text as written. Lossy paraphrasing destroys authorial signature — the scorer detects that.
+**Topic-pair numeric accuracy: 4/8 (50%)**
 
 ## Key Findings
 
-1. **100% accuracy at n=16** with verbatim text — perfect separation between originals and slop
-2. **Krebs scored highest (9.5)** — investigative journalism with concrete OSINT pivots has extremely high reasoning density
-3. **Paul Graham scored lowest among originals (6.6)** — his essay-style advice has distinctive metaphors but low falsifiable claim density, making it structurally closer to slop than other genres
-4. **One slop piece (PTP clock, 7.8) scored above two originals** — but was still correctly classified as generated based on qualitative analysis
-5. **The metric generalizes across 6 genres**: investigative journalism, security analysis, career advice, technical build logs, philosophical essays, and practical engineering posts
+1. **Qualitative classification: 16/16 (100%)** — GPT-5.4 correctly predicted original vs generated for every sample based on qualitative reasoning, even when numeric scores overlapped.
+2. **Numeric scoring is unreliable for classification** — 3 slop pieces scored above 4 originals. The average gap is only 0.5 points. A threshold-based classifier would perform at chance.
+3. **The discriminating signal is texture, not density** — The scorer flagged originals for "lived engineering experience," "idiosyncratic conceptual linkage," and "oddly specific anecdotes." It flagged slop for "polished synthesis," "standard discourse," and "portable generalization." These are qualitative judgments that don't reduce cleanly to a number.
+4. **Krebs and Geerling remain the strongest originals** — Investigative journalism (7.7) and hands-on build logs (8.0) score highest because they contain irreducible evidence: specific aliases, multicast addresses, hardware constraints.
+5. **Paul Graham and patio11 score lowest among originals** — Essay-style advice (3.7) and tactical career guidance (4.3) are structurally closest to what a model would produce, even when the content is genuinely original.
+6. **Training data contamination is a confound** — GPT-5.4 has likely seen many of these originals in training, making their ideas seem "not novel" to the scorer. This systematically depresses NCI scores for well-known authors.

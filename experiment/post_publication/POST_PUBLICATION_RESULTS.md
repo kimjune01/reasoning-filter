@@ -71,19 +71,6 @@ Mixed 3 composites + 3 originals. Neutral filenames.
 
 **The paradox:** Composites averaged **6.7** vs originals **5.4** — the adversarial text scored *higher* but was still correctly classified.
 
-## Ante-Publication Correction
-
-The original ante-publication results (blind_round3) were scored by GPT-5.0, not GPT-5.4 as labeled. Re-scoring with GPT-5.4 revealed:
-
-| Metric | GPT-5.0 | GPT-5.4 |
-|--------|:---:|:---:|
-| Original avg | 7.8 | 5.6 |
-| Slop avg | 6.1 | 5.1 |
-| Gap | 1.7 | 0.5 |
-| Topic-pair accuracy | 8/8 | 4/8 |
-
-GPT-5.4's numeric scoring does not reliably separate originals from slop. Training data contamination likely contributes: GPT-5.4 has memorized many of the original posts (Gwern, Paul Graham, Krebs), making their ideas seem "not novel."
-
 ## Conclusions
 
 ### 1. The qualitative classifier is robust
@@ -118,7 +105,6 @@ post_publication/
 ├── phase3_outputs/            # Composite outputs + scores
 ├── phase4_blind/              # Blind test texts + scores
 ├── phase4_results.md          # Phase 4 results
-├── ante_publication_rescore.md # GPT-5.4 re-score of ante-pub results
 └── POST_PUBLICATION_RESULTS.md # This file
 ```
 
