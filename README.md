@@ -54,6 +54,12 @@ All six texts are in [`experiment/samples/`](experiment/samples/):
 - `humanized_b_semantic_advertising.md` — Slop B after the same humanizer
 - `gpt54_slop_a.md` — GPT-5.4-generated slop on the same topic as Original A
 - `gpt54_slop_b.md` — GPT-5.4-generated slop on the same topic as Original B
+- `original_c_paul_graham.md` — Paul Graham, "How to Do Great Work"
+- `original_d_gwern.md` — Gwern, "The Scaling Hypothesis"
+- `original_e_patio11.md` — Patrick McKenzie, "Salary Negotiation"
+- `slop_c_great_work.md` — GPT-5.4 slop matching Paul Graham's topic
+- `slop_d_scaling.md` — GPT-5.4 slop matching Gwern's topic
+- `slop_e_salary.md` — GPT-5.4 slop matching patio11's topic
 
 ### 3. Run the scorer
 
@@ -83,8 +89,8 @@ That means Claude scored texts that Claude also generated. This is a limitation.
 
 1. ~~**Use a different scorer model.**~~ **DONE.** GPT-5.4 via [Codex CLI](https://developers.openai.com/codex/cli/) scored the same samples and produced nearly identical separation. See [`experiment/gpt54_scores.md`](experiment/gpt54_scores.md). This is not a Claude-specific pattern.
 2. ~~**Use different slop generators.**~~ **DONE.** GPT-5.4 generated slop on the same topics. Claude scored it at 0.6 avg (harsher than on its own output). GPT-5.4 scored its own slop at 3.75. No model favoritism. See [`experiment/gpt54_self_scores.md`](experiment/gpt54_self_scores.md).
-3. **Blind the scorer.** Remove all metadata and shuffle the samples. See if the scorer still clusters originals together and slop together without knowing which is which.
-4. **Test on new originals.** Score blog posts from writers known for dense reasoning (Paul Graham, Gwern, Patrick McKenzie) alongside their topic-matched slop counterparts. If the scorer only works on the Vector Space posts, it's overfit.
+3. ~~**Blind the scorer.**~~ **DONE (with caveat).** GPT-5.4 scored 6 shuffled texts (3 originals from Paul Graham, Gwern, patio11 + 3 topic-matched GPT-5.4 slop) and achieved 6/6 correct classification with perfect separation. Caveat: filenames contained `original_`/`slop_` prefixes. GPT-5.4 acknowledged this and stated it scored based on prose features. See [`experiment/blind_test.md`](experiment/blind_test.md).
+4. ~~**Test on new originals.**~~ **DONE.** Paul Graham ("How to Do Great Work"), Gwern ("The Scaling Hypothesis"), and Patrick McKenzie ("Salary Negotiation") all scored above every slop counterpart. The metric is not overfit to one author's style. See [`experiment/blind_test.md`](experiment/blind_test.md).
 
 The claim is: *structural reasoning density is computable, and surface humanization can't fake it.* Break it if you can.
 
