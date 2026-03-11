@@ -12,7 +12,9 @@ This difference is computable. A scoring prompt can measure it. And it's robust 
 
 ## Results
 
-### Cross-model scoring matrix (original experiment)
+See [`ANTE_PUBLICATION_RESULTS.md`](ANTE_PUBLICATION_RESULTS.md) — all slop was generated *before* this repo and scoring prompt were made public. The generators had no knowledge of the six dimensions being measured.
+
+### Cross-model scoring matrix
 
 | Variant | Scored by Claude | Scored by GPT-5.4 |
 |---------|:---:|:---:|
