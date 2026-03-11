@@ -1,0 +1,21 @@
+```
+NOVEL PASSAGES:
+- "Transparency in ad exchanges is not a feature once market participants can act on it; it is a state change that destroys the old use of opacity." — This framing feels somewhat novel: not just “transparency is good,” but transparency as a one-way regime shift that invalidates opacity-based business models. It is a new mechanism/boundary-condition framing more than a new topic.
+- "That shift is hard to reverse because the hidden cost is no longer hypothetical, although it stalls where the disclosed data is too partial or too noisy to support a credible comparison." — The specific condition here feels less standard: transparency only compresses margins when disclosure crosses a credibility threshold for comparison. That “partial/noisy disclosure stalls the shift” clause is a sharper boundary condition than the usual open-markets argument.
+- "Transparency does not have to remove those costs to change behavior; it only has to make them finite enough to model against the recurring tax of staying put." — This feels novel as a decision-theoretic mechanism: switching friction need not disappear, only become legible enough for spreadsheet comparison. That is a more precise behavioral account than generic “lower switching costs.”
+- "If they remain bundled into an undifferentiated take rate, transparency turns the bundle from camouflage into evidence." — This is a striking and somewhat novel conceptual turn: bundling under opacity as camouflage, then disclosure converting the same bundle into proof against itself. It is a new rhetorical-conceptual connection.
+- "The fee stack then becomes visible enough to attack from multiple directions at once." — The multi-front attack idea (procurement, finance, engineering, entrants) as a consequence of fee visibility is a mildly novel synthesis of organizational mechanism rather than a standard single-market-efficiency claim.
+
+RECOMBINED PASSAGES:
+- "That is why real transparency pushes exchange fees down toward infrastructure pricing rather than slightly lower versions of legacy pricing." — Echoes standard commoditization arguments from software/infrastructure economics: once a layer is standardized and measurable, margins compress toward utility pricing.
+- "The shipping container is useful here because it changed economics by standardizing the unit, not by making a moral case for efficiency." — Echoes the well-known containerization analogy from logistics, platform standardization, and techno-economic history.
+- "Open protocols matter because they lower coordination cost without requiring one company to own every layer." — Echoes common open-standards vs closed-platform frameworks from internet history, protocol economics, and open-source/network-effects arguments.
+- "Email beat proprietary messaging networks because interoperability compounded across senders and receivers faster than closed control could preserve its advantages. The web, TCP/IP, and Linux did not win instantly either" — Directly echoes canonical narratives about open systems eventually beating proprietary ones through network effects and shared substrate advantages.
+- "High exchange fees therefore depend less on exceptional execution than on complexity, asymmetry, and switching pain." — Echoes classic theories of rents from information asymmetry, lock-in, and switching costs.
+- "The core act of sitting in the middle and clearing trades will be pushed toward commodity pricing because transparent markets attack middleman rents in sequence" — Echoes standard disintermediation and middleman-rent compression arguments from market design and platform economics.
+- "Exchanges can still charge for fraud prevention, identity resolution where law permits it, forecasting, curation, guarantees, analytics, workflow software, credit, settlement, and brand safety" — Echoes the familiar “core layer commoditizes, value migrates to differentiated services” framework seen in cloud, payments, and logistics markets.
+
+RECONSTRUCTABILITY: 84%
+
+NOVELTY CONFIDENCE: 2/5 — The essay’s core argument is largely reconstructable from known ideas about standardization, open protocols, switching costs, and margin compression, though a few formulations and boundary conditions feel sharper than boilerplate.
+```

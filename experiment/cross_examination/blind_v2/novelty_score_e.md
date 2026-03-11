@@ -1,0 +1,25 @@
+```
+NOVEL PASSAGES:
+- "Proprietary mechanism design therefore tends to produce asymmetric secrecy rather than real secrecy, and the hidden cost falls on the actors least able to infer the rules from market behavior." — This feels somewhat novel as a framing: not just "opacity is bad," but a specific mechanism where secrecy is unevenly distributed, benefiting sophisticated insiders while disadvantaging smaller participants and auditors.
+- "a software bug usually interrupts a service, while a mechanism bug can distort bids, rankings, and growth paths for years without ever presenting as a clean outage." — This is a strong, specific distinction between software-layer failures and incentive-layer failures. The underlying idea is related to mechanism design, but this formulation is sharper and less standard.
+- "solving business pressure by smuggling policy choices into math where outsiders cannot contest them." — This feels novel mainly as a compact mechanism/diagnosis: policy discretion being hidden inside quantitative systems rather than openly debated.
+- "The relevant stress test is therefore not whether the rules survive secrecy, but whether they still work after adversaries study them." — This is a new connection between security-style adversarial robustness and auction/protocol legitimacy. The components are familiar, but the transfer of the test is less standard.
+- "the state prefers systems it can read and steer, while a secret auction lets steering happen through undisclosed ranking and pricing changes rather than through public rules." — This feels moderately novel as a political mechanism: opacity lowers the transaction cost of state-platform coordination by moving intervention into parameter tuning.
+- "The company can then defend opacity by claiming that disclosure would compromise integrity, which converts a political choice into a technical black box." — This is a notable and relatively fresh formulation of how governance choices get laundered as technical necessity.
+- "Closed systems therefore become censorship machines even when run by decent people, since the failure is structural before it is personal." — The censorship concern is familiar, but this structural-not-personal framing is a stronger and less generic articulation.
+- "I would publish it as a blog series rather than a forgotten PDF, because the equations alone do not reveal the governing constraints." — This feels novel at the level of communication/governance mechanism: publication format itself matters because legitimacy depends on surfacing normative choices, not just formulas.
+
+RECOMBINED PASSAGES:
+- "Once the mechanism decides which businesses scale, which messages spread, and which actors are quietly priced out, hiding it stops looking like product strategy and starts looking like private rulemaking without accountability." — echoes Lessig-style "code is law," platform governance literature, and common arguments about private infrastructure exercising quasi-governmental power.
+- "If disclosure destroys your position anyway, the business was resting on obscurity rather than on capabilities that survive inspection." — echoes open-source/business-moat arguments: defensibility should come from execution, data, distribution, trust, and operations, not secrecy alone.
+- "Once participants can reason about the rules, researchers can identify edge cases, outsiders can surface adversarial strategies" — echoes open-source/security arguments that public scrutiny reveals flaws and improves robustness.
+- "An auction that fails once smart participants understand it was depending on ignorance to function, and ignorance is not a stable operating condition for infrastructure." — echoes Kerckhoffs-style security principles and adversarial mechanism design arguments.
+- "If the real governance of the market happens in private meetings between the platform, large customers, and regulators" — echoes regulatory capture and public choice critiques.
+- "One company can still censor and a government can still coerce, but exit becomes possible, and exit is the practical defense that benevolence cannot replace." — echoes decentralization/interoperability arguments from internet governance, crypto, and protocol politics.
+- "Email resists exclusion better than social platforms, the web resists enclosure better than app stores, and open financial rails resist cutoff better than private payment stacks" — echoes standard open-protocol vs closed-platform comparisons common in internet history and decentralization discourse.
+- "What openness changes is the foundation: it makes the market contestable rather than merely administered" — echoes contestability theory, antitrust/platform competition arguments, and Hayekian/liberal critiques of centralized administration.
+
+RECONSTRUCTABILITY: 84%
+
+NOVELTY CONFIDENCE: 3/5 — The essay’s core structure is familiar from platform governance, open protocols, security-through-transparency, and regulatory capture arguments, but several formulations and a few connections feel genuinely less standard.
+```
