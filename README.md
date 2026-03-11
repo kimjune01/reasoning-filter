@@ -12,7 +12,7 @@ This difference is computable. A scoring prompt can measure it. And it's robust 
 
 ## Results
 
-Cross-model, cross-generator scoring matrix:
+### Cross-model scoring matrix (original experiment)
 
 | Variant | Scored by Claude | Scored by GPT-5.4 |
 |---------|:---:|:---:|
@@ -21,11 +21,28 @@ Cross-model, cross-generator scoring matrix:
 | Claude Haiku slop (humanized) | 2.40 | 3.70 |
 | GPT-5.4 slop | 0.60 | 3.75 |
 
-Every combination tested. Different scorer, different generator — same separation. Originals cluster at ~8.7, slop clusters at ~3.5.
+### Blind test: 16 samples, 8 authors, neutral filenames
 
-**Argument Dependency Chain** is the strongest discriminator: originals score 8-9, slop scores 1-4. You can't fake an argument chain by editing commas. You'd have to actually think.
+GPT-5.4 scored 16 shuffled texts (8 originals + 8 topic-matched slop) with no label information:
 
-Full results: [`experiment/RESULTS.md`](experiment/RESULTS.md) | GPT-5.4 cross-validation: [`experiment/gpt54_scores.md`](experiment/gpt54_scores.md)
+| Author | Original Score | Slop Score | Both Correct? |
+|--------|:---:|:---:|:---:|
+| Gwern | 8.9 | 6.6 | Yes |
+| Jeff Geerling | 8.6 | 8.2 | Yes |
+| Ashkan Soltani | 8.5 | 7.3 | Yes |
+| patio11 | 8.2 | 6.4 | Yes |
+| Sean Goedecke | 7.9 | 7.0 | Yes |
+| Paul Graham | 7.4 | 4.7 | Yes |
+| Simon Willison | 7.6 | 6.5 | Yes |
+| Brian Krebs | 9.5 | 6.9 | Yes |
+
+**Classification accuracy: 16/16 (100%)** with verbatim source text
+
+An earlier run using WebFetch-paraphrased originals scored 14/16. Both misses were fixed by using verbatim text — Krebs jumped from 7.1 to 9.5 once his actual prose was scored instead of a summary.
+
+**Argument Dependency Chain** remains the strongest discriminator across all tests.
+
+Full results: [`experiment/RESULTS.md`](experiment/RESULTS.md) | Blind test details: [`experiment/blind_round3_summary.md`](experiment/blind_round3_summary.md) | Raw scores: [`experiment/blind_round3_results.md`](experiment/blind_round3_results.md)
 
 ## Reproduce It
 
@@ -44,28 +61,26 @@ Full results: [`experiment/RESULTS.md`](experiment/RESULTS.md) | GPT-5.4 cross-v
 
 ### 2. Read the samples
 
-All six texts are in [`experiment/samples/`](experiment/samples/):
+All texts are in [`experiment/samples/`](experiment/samples/) — 20 files across 8 original authors and their topic-matched slop counterparts:
 
-- `original_a_last_signal.md` — from the [Vector Space](https://kimjune01.github.io/vector-space) blog series
-- `original_b_keywords_tiny_circles.md` — from the same series
-- `slop_a_trust_signals.md` — AI-generated on the same topic as Original A
-- `slop_b_semantic_advertising.md` — AI-generated on the same topic as Original B
-- `humanized_a_trust_signals.md` — Slop A after running through [blader/humanizer](https://github.com/blader/humanizer)
-- `humanized_b_semantic_advertising.md` — Slop B after the same humanizer
-- `gpt54_slop_a.md` — GPT-5.4-generated slop on the same topic as Original A
-- `gpt54_slop_b.md` — GPT-5.4-generated slop on the same topic as Original B
-- `original_c_paul_graham.md` — Paul Graham, "How to Do Great Work"
-- `original_d_gwern.md` — Gwern, "The Scaling Hypothesis"
-- `original_e_patio11.md` — Patrick McKenzie, "Salary Negotiation"
-- `slop_c_great_work.md` — GPT-5.4 slop matching Paul Graham's topic
-- `slop_d_scaling.md` — GPT-5.4 slop matching Gwern's topic
-- `slop_e_salary.md` — GPT-5.4 slop matching patio11's topic
+**Vector Space originals + slop:**
+- `original_a_last_signal.md` / `slop_a_trust_signals.md` / `humanized_a_trust_signals.md`
+- `original_b_keywords_tiny_circles.md` / `slop_b_semantic_advertising.md` / `humanized_b_semantic_advertising.md`
+- `gpt54_slop_a.md` / `gpt54_slop_b.md`
+
+**External authors + slop:**
+- `original_c_paul_graham.md` / `slop_c_great_work.md`
+- `original_d_gwern.md` / `slop_d_scaling.md`
+- `original_e_patio11.md` / `slop_e_salary.md`
+- `original_f_soltani.md` / `slop_f_encryption.md`
+- `original_g_willison.md` / `slop_g_ai_dread.md`
+- `original_h_goedecke.md` / `slop_h_code_review_ai.md`
+- `original_i_krebs.md` / `slop_i_botnet.md`
+- `original_j_geerling.md` / `slop_j_ptp_clock.md`
 
 ### 3. Run the scorer
 
 Feed the scoring prompt + any sample text to Claude (or any frontier LLM). Compare scores across variants.
-
-The slop was generated using the prompts in [`experiment/slop_generation_prompts.md`](experiment/slop_generation_prompts.md). The humanizer skill is documented in [`experiment/humanizer_SKILL.md`](experiment/humanizer_SKILL.md).
 
 ### 4. Try your own texts
 
@@ -87,10 +102,10 @@ This entire experiment — the scoring prompt, the slop generation, the humaniza
 
 That means Claude scored texts that Claude also generated. This is a limitation. The scorer may have systematic biases toward or against its own output patterns. To falsify these results:
 
-1. ~~**Use a different scorer model.**~~ **DONE.** GPT-5.4 via [Codex CLI](https://developers.openai.com/codex/cli/) scored the same samples and produced nearly identical separation. See [`experiment/gpt54_scores.md`](experiment/gpt54_scores.md). This is not a Claude-specific pattern.
-2. ~~**Use different slop generators.**~~ **DONE.** GPT-5.4 generated slop on the same topics. Claude scored it at 0.6 avg (harsher than on its own output). GPT-5.4 scored its own slop at 3.75. No model favoritism. See [`experiment/gpt54_self_scores.md`](experiment/gpt54_self_scores.md).
-3. ~~**Blind the scorer.**~~ **DONE (with caveat).** GPT-5.4 scored 6 shuffled texts (3 originals from Paul Graham, Gwern, patio11 + 3 topic-matched GPT-5.4 slop) and achieved 6/6 correct classification with perfect separation. Caveat: filenames contained `original_`/`slop_` prefixes. GPT-5.4 acknowledged this and stated it scored based on prose features. See [`experiment/blind_test.md`](experiment/blind_test.md).
-4. ~~**Test on new originals.**~~ **DONE.** Paul Graham ("How to Do Great Work"), Gwern ("The Scaling Hypothesis"), and Patrick McKenzie ("Salary Negotiation") all scored above every slop counterpart. The metric is not overfit to one author's style. See [`experiment/blind_test.md`](experiment/blind_test.md).
+1. ~~**Use a different scorer model.**~~ **DONE.** GPT-5.4 via [Codex CLI](https://developers.openai.com/codex/cli/) scored the same samples and produced nearly identical separation. See [`experiment/gpt54_scores.md`](experiment/gpt54_scores.md).
+2. ~~**Use different slop generators.**~~ **DONE.** GPT-5.4 generated slop on the same topics. Both Claude and GPT-5.4 scored it low. See [`experiment/gpt54_self_scores.md`](experiment/gpt54_self_scores.md).
+3. ~~**Blind the scorer.**~~ **DONE.** 16 texts with neutral filenames, shuffled randomly. GPT-5.4 achieved 16/16 (100%) correct classification with verbatim source text. See [`experiment/blind_round3_summary.md`](experiment/blind_round3_summary.md).
+4. ~~**Test on new originals.**~~ **DONE.** 8 authors tested: Paul Graham, Gwern, patio11, Ashkan Soltani, Simon Willison, Sean Goedecke, Brian Krebs, Jeff Geerling. The metric generalizes across genres.
 
 The claim is: *structural reasoning density is computable, and surface humanization can't fake it.* Break it if you can.
 
