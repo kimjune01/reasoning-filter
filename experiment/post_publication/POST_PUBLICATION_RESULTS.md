@@ -77,9 +77,9 @@ Mixed 3 composites + 3 originals. Neutral filenames.
 
 Even when the adversary knows the exact scoring dimensions and optimizes against all six, GPT-5.4's qualitative assessment correctly identifies generated text. The tell isn't any single dimension — it's the **evenness**. Real writing has uneven texture: sharp in some places, loose in others. Generated text, even adversarially optimized text, maintains a consistent polish that reads as synthetic.
 
-### 2. The numeric score is not robust
+### 2. The numeric rubric is gameable
 
-The 6-dimensional numeric rubric does not reliably separate originals from slop when scored by GPT-5.4. The adversarial humanizer can boost numeric scores above originals. This means the metric-as-number is gameable; the metric-as-qualitative-assessment is not.
+The 6-dimensional numeric rubric does not reliably separate originals from slop. The adversarial humanizer boosted composite scores *above* originals (6.7 vs 5.4) — the rubric rewarded the adversary. **Do not use the numeric score as a standalone filter.** The qualitative classification is doing the real work; the numbers are a distraction at best and actively misleading at worst.
 
 ### 3. Additive strategies work — but not well enough
 
