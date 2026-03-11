@@ -1,4 +1,4 @@
-# Experiment Results: Reasoning Density Scorer
+# Ante-Publication Results: Reasoning Density Scorer
 
 ## Scores Summary
 

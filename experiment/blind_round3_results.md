@@ -1,4 +1,4 @@
-# Blind Round 3 Reasoning Density Analysis
+# Ante-Publication: Reasoning Density Analysis (16 Samples)
 
 Scorer: GPT-5.4 via Codex CLI
 
